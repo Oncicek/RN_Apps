@@ -13,7 +13,7 @@ export default function App() {
   };
 
   const screen = userNumber ? (
-    <GameScreen />
+    <GameScreen pickedNumber={userNumber} />
   ) : (
     <StartGameScreen onStartNumber={startGameHandler} />
   );

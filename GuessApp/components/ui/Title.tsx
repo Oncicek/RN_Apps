@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from "react";
 import { Text, StyleSheet } from "react-native";
-import { Colours } from "../data/colours";
+import { Colours } from "../../data/colours";
 
 interface TitleProps {
   children?: ReactNode;
@@ -14,10 +14,10 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: "bold",
-    color: Colours.accent500,
+    color: "white",
     textAlign: "center",
     borderWidth: 2,
-    borderColor: Colours.accent500,
+    borderColor: "white",
     padding: 12,
   },
 });
