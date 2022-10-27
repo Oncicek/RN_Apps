@@ -1,6 +1,4 @@
-import { RouteProp } from "@react-navigation/native";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import React, { FC } from "react";
+import React, { FC, useEffect, useLayoutEffect } from "react";
 import {
   View,
   Text,
@@ -9,16 +7,14 @@ import {
   ListRenderItemInfo,
 } from "react-native";
 import { MealItem } from "../components/MealItem";
-import { MEALS } from "../data/dummy-data";
+import { CATEGORIES, MEALS } from "../data/dummy-data";
 import Meal from "../data/models/meal";
-import { RootStackParamsList } from "../types";
+import { RootStackScreenProps } from "../types";
 
-interface MealsProps {
-  navigation: NativeStackNavigationProp<RootStackParamsList, "Meals">;
-  route: RouteProp<RootStackParamsList, "Meals">;
-}
-
-export const Meals: FC<MealsProps> = ({ navigation, route }) => {
+export const Meals: FC<RootStackScreenProps<"Meals">> = ({
+  navigation,
+  route,
+}) => {
   const id = route.params.categoryId;
 
   const displayedMeals = MEALS.filter(
@@ -28,6 +24,11 @@ export const Meals: FC<MealsProps> = ({ navigation, route }) => {
   const renderedMeals = (dataItem: ListRenderItemInfo<Meal>) => (
     <MealItem data={dataItem.item} />
   );
+
+  useLayoutEffect(() => {
+    const title = CATEGORIES.find((category) => category.id === id)?.title;
+    navigation.setOptions({ title });
+  }, [navigation, id]);
 
   return (
     <View style={styles.container}>

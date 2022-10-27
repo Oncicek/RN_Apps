@@ -1,16 +1,13 @@
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React, { FC } from "react";
 import { FlatList, ListRenderItemInfo } from "react-native";
 import { CategoryGridTile } from "../components/CategoryGridTile";
 import { CATEGORIES } from "../data/dummy-data";
 import Category from "../data/models/category";
-import { RootStackParamsList } from "../types";
+import { RootStackScreenProps } from "../types";
 
-interface CategoriesProps {
-  navigation: NativeStackNavigationProp<RootStackParamsList, "Categories">;
-}
-
-export const Categories: FC<CategoriesProps> = ({ navigation }) => {
+export const Categories: FC<RootStackScreenProps<"Categories">> = ({
+  navigation,
+}) => {
   const renderCategoryItem = (itemData: ListRenderItemInfo<Category>) => {
     const { item } = itemData;
 
