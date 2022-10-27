@@ -12,6 +12,7 @@ import { GameOverScreen } from "./screens/GameOverScreen";
 import { GameScreen } from "./screens/GameScreen";
 import { StartGameScreen } from "./screens/StartGameScreen";
 import { useFonts } from "expo-font";
+import { StatusBar } from "expo-status-bar";
 
 export default function App() {
   const [userNumber, setUserNumber] = useState<number | undefined>();
@@ -65,19 +66,22 @@ export default function App() {
   }
 
   return (
-    <LinearGradient
-      style={styles.rootScreen}
-      colors={[Colours.primaryApp, Colours.accent500]}
-    >
-      <ImageBackground
-        source={require("./assets/images/background.png")}
-        resizeMode="cover"
+    <>
+      <StatusBar style="light" />
+      <LinearGradient
         style={styles.rootScreen}
-        imageStyle={styles.imageBckg}
+        colors={[Colours.primaryApp, Colours.accent500]}
       >
-        <SafeAreaView style={styles.rootScreen}>{screen}</SafeAreaView>
-      </ImageBackground>
-    </LinearGradient>
+        <ImageBackground
+          source={require("./assets/images/background.png")}
+          resizeMode="cover"
+          style={styles.rootScreen}
+          imageStyle={styles.imageBckg}
+        >
+          <SafeAreaView style={styles.rootScreen}>{screen}</SafeAreaView>
+        </ImageBackground>
+      </LinearGradient>
+    </>
   );
 }
 

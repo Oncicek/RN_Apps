@@ -8,6 +8,7 @@ import {
   ScrollView,
 } from "react-native";
 import { PrimaryButton } from "../components/ui/PrimaryButton";
+//@ts-ignore
 import { Title } from "../components/ui/Title";
 import { Colours } from "../data/colours";
 

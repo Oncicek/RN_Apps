@@ -11,6 +11,7 @@ import {
 import { Card } from "../components/ui/Card";
 import { InstructionText } from "../components/ui/InstructionText";
 import { PrimaryButton } from "../components/ui/PrimaryButton";
+//@ts-ignore
 import { Title } from "../components/ui/Title";
 import { Colours } from "../data/colours";
 

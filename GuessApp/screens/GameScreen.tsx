@@ -11,6 +11,7 @@ import { NumberContainer } from "../components/game/NumberContainer";
 import { Card } from "../components/ui/Card";
 import { InstructionText } from "../components/ui/InstructionText";
 import { PrimaryButton } from "../components/ui/PrimaryButton";
+//@ts-ignore
 import { Title } from "../components/ui/Title";
 import { generateRandomBetween } from "../utils/generateRandomBetween";
 import { Ionicons } from "@expo/vector-icons";
