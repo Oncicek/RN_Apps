@@ -1,12 +1,17 @@
 import { LinearGradient } from "expo-linear-gradient";
 import React, { useState } from "react";
-import { ImageBackground, SafeAreaView, StyleSheet } from "react-native";
+import {
+  ImageBackground,
+  SafeAreaView,
+  StyleSheet,
+  View,
+  Text,
+} from "react-native";
 import { Colours } from "./data/colours";
 import { GameOverScreen } from "./screens/GameOverScreen";
 import { GameScreen } from "./screens/GameScreen";
 import { StartGameScreen } from "./screens/StartGameScreen";
 import { useFonts } from "expo-font";
-import AppLoading from "expo-app-loading";
 
 export default function App() {
   const [userNumber, setUserNumber] = useState<number | undefined>();
@@ -19,7 +24,11 @@ export default function App() {
   });
 
   if (!areFontsLoaded) {
-    return <AppLoading />;
+    return (
+      <View>
+        <Text>Henlo</Text>
+      </View>
+    );
   }
 
   const startGameHandler = (pickedNumber: number) => {
