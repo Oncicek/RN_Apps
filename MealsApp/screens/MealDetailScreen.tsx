@@ -1,4 +1,4 @@
-import React, { FC, useLayoutEffect } from "react";
+import React, { FC, useContext, useLayoutEffect } from "react";
 import {
   View,
   Text,
@@ -13,6 +13,7 @@ import { Subtitle } from "../components/MealDetail/Subtitle";
 import { MealDetails } from "../components/MealDetails";
 import { MEALS } from "../data/dummy-data";
 import { RootStackScreenProps } from "../types";
+import { FavoritesContext } from "../store/context/favorites-context";
 
 export const MealDetailScreen: FC<RootStackScreenProps<"MealDetail">> = ({
   route,
@@ -30,8 +31,16 @@ export const MealDetailScreen: FC<RootStackScreenProps<"MealDetail">> = ({
     steps,
   } = MEALS.find((meal) => meal.id === mealId) || {};
 
+  const context = useContext(FavoritesContext);
+
+  const isMealFavorite = context?.ids.includes(mealId);
+
   const headerButtonPressHandler = () => {
-    alert("necum");
+    if (isMealFavorite) {
+      context?.removeFavorite(mealId);
+    } else {
+      context?.addFavorite(mealId);
+    }
   };
 
   useLayoutEffect(() => {
@@ -40,7 +49,7 @@ export const MealDetailScreen: FC<RootStackScreenProps<"MealDetail">> = ({
         <IconButton
           onPress={headerButtonPressHandler}
           color="white"
-          icon="star"
+          icon={isMealFavorite ? "star" : "star-outline"}
         />
       ),
     });
