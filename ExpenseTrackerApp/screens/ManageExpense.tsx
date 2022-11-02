@@ -1,11 +1,12 @@
 import { useNavigation, useRoute } from "@react-navigation/native";
 import React, { FC, useContext, useLayoutEffect } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TextInput } from "react-native";
 import { IconButton } from "../components/UI/IconButton";
 import { Buttons } from "../components/UI/Buttons";
 import { GlobalStyles } from "../constants";
 import { RootStackParamList, RootStackScreenProps } from "../types";
 import { ExpensesContext } from "../store/expenses-context";
+import { ExpenseForm } from "../components/manageExpense/ExpenseForm";
 
 export const ManageExpense: FC<RootStackScreenProps<"ManageExpense">> = ({
   navigation,
@@ -52,6 +53,7 @@ export const ManageExpense: FC<RootStackScreenProps<"ManageExpense">> = ({
 
   return (
     <View style={styles.container}>
+      <ExpenseForm />
       <View style={styles.buttons}>
         <Buttons mode="flat" onPress={cancelHandler} style={styles.button}>
           Cancel
