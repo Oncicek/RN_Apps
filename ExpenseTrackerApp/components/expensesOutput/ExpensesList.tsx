@@ -1,6 +1,22 @@
 import React, { FC } from "react";
-import { FlatList } from "react-native";
+import { FlatList, ListRenderItemInfo, Text } from "react-native";
+import { Expenses } from "../../types";
+import { ExpenseItem } from "./ExpenseItem";
 
-export const ExpensesList: FC = () => {
-  return <FlatList></FlatList>;
+interface ExpensesListProps {
+  expenses: Expenses[];
+}
+
+const renderExpenseItem = (itemData: ListRenderItemInfo<Expenses>) => (
+  <ExpenseItem {...itemData.item} />
+);
+
+export const ExpensesList: FC<ExpensesListProps> = ({ expenses }) => {
+  return (
+    <FlatList
+      data={expenses}
+      renderItem={renderExpenseItem}
+      keyExtractor={(item) => item.id}
+    />
+  );
 };

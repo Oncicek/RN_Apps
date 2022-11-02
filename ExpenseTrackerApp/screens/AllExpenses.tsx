@@ -1,10 +1,9 @@
 import React, { FC } from "react";
 import { View, Text } from "react-native";
+import { ExpensesOutput } from "../components/expensesOutput/ExpensesOutput";
 
-export const AllExpenses: FC = () => {
-  return (
-    <View>
-      <Text>All expenses</Text>
-    </View>
-  );
+interface AllExpensesProps {}
+
+export const AllExpenses: FC<AllExpensesProps> = () => {
+  return <ExpensesOutput periodName="Last 7 days" />;
 };

@@ -1,7 +1,7 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 export type RootStackParamList = {
-  ManageExpense: undefined;
+  ManageExpense: { expenseId?: string };
   RecentExpenses: undefined;
   AllExpenses: undefined;
   ExpensesOverview: undefined;
@@ -14,4 +14,11 @@ declare global {
   namespace ReactNavigation {
     interface RootParamList extends RootStackParamList {}
   }
+}
+
+export interface Expenses {
+  amount: number;
+  id: string;
+  description: string;
+  date: Date;
 }

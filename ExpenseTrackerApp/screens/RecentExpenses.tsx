@@ -3,7 +3,7 @@ import { View, Text } from "react-native";
 
 export const RecentExpenses: FC = () => {
   return (
-    <View>
+    <View style={{ backgroundColor: "black", flex: 1 }}>
       <Text>Recent expenses</Text>
     </View>
   );
