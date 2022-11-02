@@ -5,7 +5,7 @@ import { Expenses } from "../../types";
 import { ExpensesList } from "./ExpensesList";
 import { ExpensesSummary } from "./ExpensesSummary";
 
-const DUMMY_EXPENSES: Expenses[] = [
+export const DUMMY_EXPENSES: Expenses[] = [
   {
     id: "e1",
     description: "Ahojky",
@@ -35,10 +35,18 @@ export const ExpensesOutput: FC<ExpensesOutputProps> = ({
   expenses,
   periodName,
 }) => {
+  if (!expenses) {
+    return (
+      <View>
+        <Text>Nič</Text>
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
-      <ExpensesSummary expenses={DUMMY_EXPENSES} periodName={periodName} />
-      <ExpensesList expenses={DUMMY_EXPENSES} />
+      <ExpensesSummary expenses={expenses} periodName={periodName} />
+      <ExpensesList expenses={expenses} />
     </View>
   );
 };

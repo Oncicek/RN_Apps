@@ -17,8 +17,8 @@ declare global {
 }
 
 export interface Expenses {
-  amount: number;
-  id: string;
-  description: string;
-  date: Date;
+  amount?: number;
+  id?: string;
+  description?: string;
+  date?: Date;
 }

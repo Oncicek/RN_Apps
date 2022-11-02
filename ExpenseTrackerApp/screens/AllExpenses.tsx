@@ -1,9 +1,12 @@
-import React, { FC } from "react";
-import { View, Text } from "react-native";
+import React, { FC, useContext } from "react";
 import { ExpensesOutput } from "../components/expensesOutput/ExpensesOutput";
+import { ExpensesContext } from "../store/expenses-context";
 
 interface AllExpensesProps {}
 
 export const AllExpenses: FC<AllExpensesProps> = () => {
-  return <ExpensesOutput periodName="Last 7 days" />;
+  const context = useContext(ExpensesContext);
+  return (
+    <ExpensesOutput expenses={context?.expenses} periodName="All Expenses" />
+  );
 };

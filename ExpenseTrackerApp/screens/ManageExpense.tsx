@@ -1,10 +1,11 @@
 import { useNavigation, useRoute } from "@react-navigation/native";
-import React, { FC, useLayoutEffect } from "react";
+import React, { FC, useContext, useLayoutEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { IconButton } from "../components/UI/IconButton";
 import { Buttons } from "../components/UI/Buttons";
 import { GlobalStyles } from "../constants";
 import { RootStackParamList, RootStackScreenProps } from "../types";
+import { ExpensesContext } from "../store/expenses-context";
 
 export const ManageExpense: FC<RootStackScreenProps<"ManageExpense">> = ({
   navigation,
@@ -12,18 +13,34 @@ export const ManageExpense: FC<RootStackScreenProps<"ManageExpense">> = ({
 }) => {
   const expenseId = route.params?.expenseId;
   const isEditing = !!expenseId;
+  const context = useContext(ExpensesContext);
 
   const closeModal = () => {
     navigation.goBack();
   };
 
-  const deleteExpenseHandler = () => {
+  const deleteExpenseHandler = (id: string) => {
+    context?.deleteExpense(id);
     closeModal();
   };
   const cancelHandler = () => {
     closeModal();
   };
   const confirmHandler = () => {
+    if (isEditing) {
+      context?.updateExpense("e1", {
+        amount: 70000,
+        date: new Date(),
+        description: "prdele",
+      });
+    } else {
+      context?.addExpense({
+        amount: 78,
+        date: new Date(),
+        description: "Cecky",
+        id: "re",
+      });
+    }
     closeModal();
   };
 
@@ -49,7 +66,7 @@ export const ManageExpense: FC<RootStackScreenProps<"ManageExpense">> = ({
             name="trash"
             color={GlobalStyles.colors.error500}
             size={36}
-            onPress={deleteExpenseHandler}
+            onPress={() => deleteExpenseHandler(expenseId)}
           />
         </View>
       )}
